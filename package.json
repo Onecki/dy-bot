@@ -1,0 +1,32 @@
+{
+  "name": "douyin-maibot-gateway",
+  "version": "0.1.0",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "type": "module",
+  "main": "index.mjs",
+  "description": "抖音群聊机器人：Karin + Douyin adapter + MaiBot",
+  "engines": { "node": ">=22.13" },
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "app": "node index.mjs",
+    "start": "node index.mjs",
+    "setup:local": "node scripts/setup.mjs",
+    "configure": "node scripts/maibot.mjs configure",
+    "bootstrap": "node scripts/bootstrap.mjs",
+    "login:douyin": "node scripts/login.mjs",
+    "maibot": "node scripts/maibot.mjs run",
+    "test:model": "node scripts/maibot.mjs test-model",
+    "check:public": "node scripts/check-public.mjs",
+    "test:maibot": "node tests/maibot-integration.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "node-karin": "1.18.0",
+    "karin-plugin-adapter-douyin": "1.2.1",
+    "douyin-login-sdk": "npm:douyin.ts@0.6.7",
+    "qrcode": "1.5.4",
+    "ws": "8.21.3",
+    "undici": "7.30.1"
+  }
+}

@@ -1,0 +1,10 @@
+packages:
+  - .
+allowBuilds:
+  sqlite3: true
+  esbuild: true
+  sharp: true
+  '@karinjs/node-pty': false
+patchedDependencies:
+  karin-plugin-adapter-douyin@1.2.1: patches/karin-plugin-adapter-douyin@1.2.1.patch
+  douyin.ts@0.2.1: patches/douyin.ts@0.2.1.patch
