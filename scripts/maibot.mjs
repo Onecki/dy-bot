@@ -1,0 +1,14 @@
+import path from 'node:path';
+import fs from 'node:fs';
+import {spawn} from 'node:child_process';
+import {setup} from './setup.mjs';
+import {pythonPath,pythonEnv} from '../lib/python.mjs';
+setup();
+const commands={configure:['scripts/configure-maibot.py'],run:['maibot/bot.py'],'test-model':['scripts/test-maibot-model.py']};
+const command=process.argv[2];
+if(!commands[command])throw Error('可用命令：configure、run、test-model');
+const python=pythonPath();
+if(!fs.existsSync(python))throw Error('请先执行 pnpm bootstrap 安装 MaiBot');
+const child=spawn(python,[...commands[command].map(p=>path.resolve(p)),...process.argv.slice(3)],{env:pythonEnv(),stdio:'inherit',windowsHide:true});
+child.once('error',()=>{console.error('无法启动 MaiBot Python 环境');process.exitCode=1;});
+child.once('exit',code=>{process.exitCode=code ?? 1;});
