@@ -1,0 +1,36 @@
+diff --git a/dist/apps/login.js b/dist/apps/login.js
+index 35efdef..275c97d 100644
+--- a/dist/apps/login.js
++++ b/dist/apps/login.js
+@@ -1,6 +1,7 @@
+ import { a as login } from "../adapter-Bl7_aHGO.js";
+ import karin, { hooks, logger, segment } from "node-karin";
+ import QRCode from "qrcode";
++import fs from "node:fs";
+ 
+ //#region src/apps/login.ts
+ /**
+@@ -54,6 +55,9 @@ const douyinLogin = karin.command(/^#(?:抖音bot登录)$/i, async (e) => {
+ 	try {
+ 		let name = "";
+ 		const pushQr = async (info) => {
++            fs.mkdirSync("data", { recursive: true });
++            await QRCode.toFile("data/douyin-login.png", info.url, { width: 360, margin: 4 });
++            logger.info("[dybot] 扫码图片已保存到 data/douyin-login.png");
+ 			if (e.bot.adapter.name === "@karinjs/console") {
+ 				const terminal = await QRCode.toString(info.url, {
+ 					type: "terminal",
+diff --git a/dist/adapter-Bl7_aHGO.js b/dist/adapter-Bl7_aHGO.js
+index d743f1a..a7c0e1b 100644
+--- a/dist/adapter-Bl7_aHGO.js
++++ b/dist/adapter-Bl7_aHGO.js
+@@ -108,6 +108,9 @@ function createAccountManager() {
+ 	const accounts = new Map();
+ 	const build = (platformUid, session, name) => {
+ 		const bot = new Bot({
++			userId: platformUid,
++			device: session.device ?? store.load(platformUid)?.device,
++			userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) douyinim/1.1.34 Chrome/136.0.7103.59 Electron/36.4.0-rs.28.release.main.0 TTElectron/36.4.0-rs.28.release.main.0 Safari/537.36",
+ 			cookie: session.cookie,
+ 			log: sdkLog
+ 		});

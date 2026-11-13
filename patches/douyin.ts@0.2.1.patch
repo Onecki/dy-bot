@@ -1,0 +1,14 @@
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 6d10892..c14821e 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -7346,7 +7346,8 @@ var Bot = class Bot {
+ 			userId = info.uid;
+ 			if (info.nickname) this.setNick(userId, info.nickname);
+ 		}
+-		if (!http.hasDevice()) http.setDevice(await createDevice(this.log));
++		if (this.opts.device) http.setDevice(this.opts.device);
++		else if (!http.hasDevice()) http.setDevice(await createDevice(this.log));
+ 		const im = new Im({
+ 			http,
+ 			userId,

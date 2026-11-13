@@ -1,0 +1,14 @@
+diff --git a/src/llm_models/model_client/gemini_client.py b/src/llm_models/model_client/gemini_client.py
+index e6f8bd0..7040173 100644
+--- a/src/llm_models/model_client/gemini_client.py
++++ b/src/llm_models/model_client/gemini_client.py
+@@ -380,7 +380,8 @@ def _convert_messages(items: List[ContextItem]) -> Tuple[ContentListUnion, str |
+                     response=_normalize_function_response_payload(item),
+                 )
+             )
+-            contents.append(Content(role="tool", parts=[function_response_part]))
++            # Gemini generateContent 的工具结果应放在 user 内容中，不能使用 OpenAI 的 tool 角色。
++            contents.append(Content(role="user", parts=[function_response_part]))
+             index += 1
+             continue
+ 
