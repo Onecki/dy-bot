@@ -1,0 +1,9 @@
+{
+  "adapterType": "gemini",
+  "baseUrl": "https://generativelanguage.googleapis.com",
+  "apiKey": "",
+  "model": "",
+  "botName": "小抖",
+  "embeddingModel": "gemini-embedding-001",
+  "embeddingDimensions": 768
+}

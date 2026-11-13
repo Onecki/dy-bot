@@ -1,0 +1,8 @@
+{
+  "enabled": false,
+  "allowedGroups": [],
+  "maxInputChars": 2000,
+  "maxReplyChars": 600,
+  "maxRepliesPerDay": 100,
+  "quote": { "enabled": true }
+}

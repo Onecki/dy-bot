@@ -1,0 +1,10 @@
+{
+  "url": "ws://127.0.0.1:18000/ws",
+  "token": "",
+  "platform": "douyin",
+  "accountId": "",
+  "groupNames": {},
+  "sendCooldownSeconds": 10,
+  "maxOutboundAgeSeconds": 120,
+  "observeOnly": true
+}

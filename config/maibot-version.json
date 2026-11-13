@@ -1,0 +1,7 @@
+{
+  "version": "v1.3.15",
+  "archiveUrl": "https://codeload.github.com/Mai-with-u/MaiBot/tar.gz/refs/tags/v1.3.15",
+  "archiveSha256": "8f8056fa66e92f71e71152933f66309986c40c584525d6a060878432953c1593",
+  "patch": "patches/maibot-v1.3.15-gemini-tool-role.patch",
+  "uvVersion": "0.13.5"
+}
